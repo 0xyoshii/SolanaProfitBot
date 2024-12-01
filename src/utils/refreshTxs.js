@@ -5,11 +5,10 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import { HyperspaceClient } from "hyperspace-client-js";
 
-
-
 const hsClient = new HyperspaceClient(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJTT0wgUHJvZml0IEJvdCIsIm5hbWUiOiJIeXBlcnNwYWNlIiwiaWF0IjoxNTE2MjM5MDIyfQ.TVGGyClaX8R4ImCA5Odp03stu68wpjlNWe7lA90DrFA"
     );
+//deprecated api key ;)
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -55,56 +54,10 @@ export class Refresh {
     
         return;
     } catch (err) {
-    }
+            console.error(err)
+            }
     
     }
-
-    /*
-
-    async getTokenActivity(tokenMint, i) {
-        try {
-
-            
-            console.log("checking token - " + i.toString());
-
-            await new Promise(r => setTimeout(r, 300));
-
-            //this.base = "https://api-mainnet.magiceden.dev/v2/"
-
-
-            const response = await fetch(this.base + "tokens/" + tokenMint + '/activities?offset=0&limit=500', {
-                method: 'GET',
-                headers: {
-                    'accept': 'application/json, text/plain',
-                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'
-                }
-            });
-
-
-            const data = await response.json();
-        
-            for (let i = 0; i < data.length; i++) {
-
-                if (data[i].type == "buyNow") {
-                    this.txs.push(
-                    { 
-                        "hash": data[i].signature, 
-                        "buyer": data[i].buyer, 
-                        "seller": data[i].seller, 
-                        "price": data[i].price
-                    });
-                }
-
-            }
-
-            return;
-
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    */
     async getTokenActivity(tokenArray) {
         try {
 
@@ -138,7 +91,6 @@ export class Refresh {
         } catch (err) {
         }
     }
-
 
     storeTx() {
         
