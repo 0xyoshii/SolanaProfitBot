@@ -9,10 +9,8 @@ import { Profit } from "./profit/calcProfit.js";
 import { Refresh } from "./utils/refreshTxs.js";
 
 
-// Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// When the client is ready, run this code (only once)
 client.once('ready', () => {
 	console.log('Ready!');
 });
@@ -25,7 +23,6 @@ client.on('interactionCreate', async interaction => {
 	try {
 
 	if (commandName === 'profit') {
-
 
 		await interaction.deferReply({ ephemeral: true });
 		let data = await new Profit(
@@ -77,5 +74,4 @@ client.on('interactionCreate', async interaction => {
 
 });
 
-// Login to Discord with your client's token
 client.login(token);
