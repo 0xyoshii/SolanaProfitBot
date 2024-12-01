@@ -3,6 +3,14 @@
 SolanaProfitBot is a discord bot used to calculate profits on solana NFTs trades. It calculates both the P&L made on buying on secondary marketplaces and minting.
 This is the list of commands that the bot can perform.
 
+Here is a [demo](https://media.discordapp.net/attachments/1048320422929760376/1048324636259139635/unknown.png?ex=674d6626&is=674c14a6&hm=3a903f6307f5179a5e130df44bc5a02c4d23c6916f7da6b61fb6212a05d36202&=&format=webp&quality=lossless&width=773&height=558)
+
+!!01/12/2024 Update!!
+The bot is now deprecated.
+It worked fine for a few months and it was one of the only working profit bots for nfts.
+It was very hard to make it scalable, plus i didn't have the time or resources to maintain it.
+
+
 Index Collection
 -------------
 
