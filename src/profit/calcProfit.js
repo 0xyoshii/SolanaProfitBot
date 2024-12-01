@@ -4,7 +4,6 @@ import fetch from 'node-fetch';
 import { fileURLToPath } from 'url';
 import { promises as fs } from "fs";
 
-
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -28,7 +27,6 @@ export class Profit {
         return lamps / 1000000000
     }
 
-
     async parseTxs() {
         try {
             
@@ -46,9 +44,7 @@ export class Profit {
                     this.valid.push(data[i]);
                     //console.log("ADDED VALID ACTION");
                 }
-
             }
-
             return;
 
         } catch (err) {
@@ -56,15 +52,12 @@ export class Profit {
         }
     }
 
-
     async getExactAmount(hash) {
         try {
             const solana = new solanaWeb3.Connection("https://mainnet-beta.solflare.network/");
 
             const response = await solana.getParsedTransaction(hash);
-
-
-           let ind;
+            let ind;
 
             for (let i = 0; i < response.transaction.message.accountKeys.length; i++) {
                 if (response.transaction.message.accountKeys[i].pubkey.toString() == this.walletAddress) {
@@ -72,7 +65,6 @@ export class Profit {
                 }
             }
 
-     
             return this.toSOL(response.meta.postBalances[ind] - response.meta.preBalances[ind]);
         } catch (err) {
             console.log(err);
@@ -96,13 +88,12 @@ export class Profit {
         } catch (err) {
             console.log(err);
         }
-
     }
 
     toFixed(num, fixed) {
         try {
-        var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
-        return num.toString().match(re)[0];
+            var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+            return num.toString().match(re)[0];
         } catch (err) {
             throw(err)
         }
@@ -156,7 +147,6 @@ export class Profit {
             const unrealized = remainingValue + profit;
     
             return { 
-
                 "thumbnail": thumbnail,
                 "profit": this.toFixed(profit, 2),
                 "profitUsd": await this.solToUsd(profit),
@@ -182,15 +172,12 @@ export class Profit {
         } catch (err) {
             console.log(err);
         }
-        
     }
 
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-
 }
 
-//let myProfit = new Profit("Tay_Keith", "HEtY9ZqBsM6gQDkuz7KUGrhh9hd9DX4WX29dnKrhb2Jm");
-//console.log(await myProfit.getProfit())
+
 
